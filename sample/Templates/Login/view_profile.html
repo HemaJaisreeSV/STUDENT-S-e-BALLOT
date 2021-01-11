@@ -1,0 +1,30 @@
+{% include 'Login/voter.html'%}
+{% include 'Login/vview_candidates.html'%}
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"> 
+              <a r" class="nav-link" href="{% url 'view_profile' %}"><h6>VIEW CANDIDATES</h6></a>
+              
+            </li>
+          </ul>
+        </div>
+      </nav>
+<table class="table">
+    <tr>
+      <th>CANDIDATE REGISTRATION ID</th>
+      <th>NAME</th>
+       <th>POSITION</th>
+       <th>DEPARTMENT</th>
+      <th>YEAR</th>
+       <th>EMAIL-ID</th>
+       <th></th>
+</tr>
+<tr>
+<td>{{v_prof.CRegistration_Id}}</td>
+<td>{{v_prof.Cname}}</td>
+<td>{{v_prof.Cposition}}</td>
+<td>{{v_prof.Cdept}}</td>
+<td>{{v_prof.Cyear}}</td>
+<td>{{v_prof.Cemail_id}}</td>

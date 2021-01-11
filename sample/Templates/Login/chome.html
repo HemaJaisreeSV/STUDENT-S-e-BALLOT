@@ -1,0 +1,62 @@
+{% include 'Login/candidate.html'%}
+{%block content%}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a r" class="nav-link" href="{% url 'chome' %}"><h6>HOME</h6></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br><br>
+        {% if candidate.is_authenticated %}
+          <li> WELCOME CANDIDATE {{ candidate.Cname}} </li><br>
+        {%endif%}
+          {% for i in candidate%}
+          <h3>WELCOME   {{ i.Cname}}
+        </h3><br>
+          <h3>REGISTRATION ID :
+            {{i.CRegistration_Id}}
+          </h3><br>
+          <h3>DEPARTMENT :
+            {{i.Cdept}}
+          </h3><br>
+          <h3>YEAR :
+            {{i.Cyear}}
+          </h3><br>
+          {% endfor %}
+          <h3> DATE : <span id="datetime"> </span>
+          <script>
+            var dt = new Date();
+            document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+
+            (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear());
+          </script><br><br>
+
+          <h3> TIME : <span id="clockbox"> </span>
+          <script>
+            var clocktext=new Time(); ""+nhour+":"+nmin+":"+nsec+ap+"";
+          document.getElementById('clockbox').innerHTML=clocktext;
+          </script>
+            <div id="clockbox"></div>
+            <script type="text/javascript">
+              function GetClock(){
+              var d=new Date();
+              var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+              if(nhour==0){ap=" AM";nhour=12;}
+              else if(nhour<12){ap=" AM";}
+              else if(nhour==12){ap=" PM";}
+              else if(nhour>12){ap=" PM";nhour-=12;}
+
+              if(nmin<=9) nmin="0"+nmin;
+              if(nsec<=9) nsec="0"+nsec;
+
+              var clocktext=""+nhour+":"+nmin+":"+nsec+ap+"";
+               document.getElementById('clockbox').innerHTML=clocktext;
+              }
+              GetClock();
+              setInterval(GetClock,1000);
+              </script>
+
+{%endblock%}
